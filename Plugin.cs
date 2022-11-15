@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -56,7 +57,8 @@ namespace BugFixes
             if (
                 Screen.currentResolution.width != OptionsScreen.CurrentWidth
                 || Screen.currentResolution.height != OptionsScreen.CurrentHeight
-            ) {
+            )
+            {
                 L.LogWarning("Found real solution != options solution. Adjusting.");
                 OptionsScreen.SetResolution();
             }
