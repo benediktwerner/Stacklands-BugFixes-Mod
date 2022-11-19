@@ -50,6 +50,44 @@ namespace BugFixes
             yield break;
         }
 
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(Combatable), nameof(Combatable.StartOrJoinConflictInStack))]
+        public static void JoinWholeStackInCombat(Combatable __instance, out bool __runOriginal)
+        {
+            __runOriginal = false;
+            var conflict = __instance.GetConflictInStack();
+            if (conflict == null)
+                conflict = Conflict.StartConflict(__instance);
+            __instance
+                .CardsInStackMatchingPredicate((CardData x) => x is Combatable c && !c.InConflict)
+                .ForEach(c => conflict.JoinConflict(c as Combatable));
+        }
+
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(Combatable), nameof(Combatable.StoppedDragging))]
+        public static void JoinWholeStackInCombat2(Combatable __instance, out GameCard __state)
+        {
+            __state = __instance.MyGameCard.Child;
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(Combatable), nameof(Combatable.StoppedDragging))]
+        public static void JoinWholeStackInCombat3(Combatable __instance, GameCard __state)
+        {
+            var conflict = __instance.MyConflict;
+            if (conflict == null)
+                return;
+
+            var child = __state;
+            while (child != null)
+            {
+                var nxt = child.Child;
+                if (child.CardData is Combatable c && !c.InConflict)
+                    conflict.JoinConflict(c);
+                child = nxt;
+            }
+        }
+
         public void Update()
         {
             if (Time.realtimeSinceStartup > 30f)
