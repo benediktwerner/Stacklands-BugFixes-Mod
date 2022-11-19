@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -86,6 +87,25 @@ namespace BugFixes
                     conflict.JoinConflict(c);
                 child = nxt;
             }
+        }
+
+        [HarmonyTranspiler]
+        [HarmonyPatch(typeof(Boosterpack), nameof(Boosterpack.Clicked))]
+        public static IEnumerable<CodeInstruction> NoWaitForSecondsInSpecialEvents(
+            IEnumerable<CodeInstruction> instructions
+        )
+        {
+            var matcher = new CodeMatcher(instructions).MatchForward(
+                false,
+                new CodeMatch(OpCodes.Ldloc_2),
+                new CodeMatch(OpCodes.Ldc_I4_S, (sbyte)10),
+                new CodeMatch(OpCodes.Bne_Un)
+            );
+            if (matcher.IsValid)
+                matcher.Advance(2).SetOpcodeAndAdvance(OpCodes.Ble_Un);
+            else
+                L.LogWarning("Failed to find boughtBoosters == 10 check");
+            return matcher.InstructionEnumeration();
         }
 
         public void Update()
