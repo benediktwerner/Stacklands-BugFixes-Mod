@@ -120,6 +120,11 @@ namespace BugFixes
                 L.LogWarning("Found real solution != options solution. Adjusting.");
                 OptionsScreen.SetResolution();
             }
+
+            if (WorldManager.instance?.CurrentRunVariables != null)
+            {
+                WorldManager.instance.CurrentRunVariables.CanDropItem = true;
+            }
         }
     }
 }
