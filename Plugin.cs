@@ -117,7 +117,7 @@ namespace BugFixes
                 || Screen.currentResolution.height != OptionsScreen.CurrentHeight
             )
             {
-                L.LogWarning("Found real solution != options solution. Adjusting.");
+                L.LogWarning("Found real resolution != options resolution. Adjusting.");
                 OptionsScreen.SetResolution();
             }
 
