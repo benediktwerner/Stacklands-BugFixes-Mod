@@ -6,7 +6,9 @@ Fixes various bugs in the game:
 - Only spawn island ideas pack after the first Demon kill
 - Fix resolution setting sometimes not loading correctly
 - Allow getting the combat intro pack (with `Rumor: Combat`) on any pack after the 10th instead of only exactly the 10th (for saves created before the Witch Forest update or when you buy multiple packs before opening them in which case there won't be one counted as exactly the 10th)
-- Don't limit mob-specific drops to one per "attack" and block them while there are still enemies on the board
+
+Not really a bug but just really stupid:
+- Don't limit mob-specific drops to one per "attack" (i.e. until no more enemies are on the board)
 
 ## Manual Installation
 This mod requires BepInEx to work. BepInEx is a modding framework which allows multiple mods to be loaded.
@@ -30,7 +32,8 @@ This mod requires BepInEx to work. BepInEx is a modding framework which allows m
 
 ## Changelog
 
-- v1.1.0: Fix drag into combat
+- v1.1.2: Update Readme (clarify mob-specific drops adjustment)
+- v1.1.1: Fix drag into combat
 - v1.1
   - When dragging a stack onto a fight, add all cards to it
   - Allow getting the combat intro pack (with `Rumor: Combat`) on any pack after the 10th instead of only exactly the 10th (for saves created before the Witch Forest update or when you buy multiple packs before opening them in which case there won't be one counted as exactly the 10th)
