@@ -60,7 +60,7 @@ namespace BugFixes
 
         [HarmonyTranspiler]
         [HarmonyPatch(typeof(Boosterpack), nameof(Boosterpack.Clicked))]
-        public static IEnumerable<CodeInstruction> NoWaitForSecondsInSpecialEvents(
+        public static IEnumerable<CodeInstruction> SpawnCombatIntroBoosterAfter10thPack(
             IEnumerable<CodeInstruction> instructions
         )
         {
