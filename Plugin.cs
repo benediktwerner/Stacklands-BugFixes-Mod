@@ -58,6 +58,13 @@ namespace BugFixes
             }
         }
 
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(Demon), nameof(Demon.Die))]
+        public static void AllowMoreThan1DemonSwordDrop(Demon __instance)
+        {
+            __instance.Drops.Chances.ForEach(c => c.HasMaxCount = false);
+        }
+
         [HarmonyTranspiler]
         [HarmonyPatch(typeof(Boosterpack), nameof(Boosterpack.Clicked))]
         public static IEnumerable<CodeInstruction> SpawnCombatIntroBoosterAfter10thPack(

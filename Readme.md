@@ -8,6 +8,7 @@ Fixes various bugs in the game:
 
 Not really a bug but just really stupid:
 - Don't limit mob-specific drops to one per "attack" (i.e. until no more enemies are on the board)
+- Allow the Demon to drop a Demon Sword while another one is on the board (you can already do this anyway by shipping them to the island before the fight)
 
 ## Manual Installation
 This mod requires BepInEx to work. BepInEx is a modding framework which allows multiple mods to be loaded.
@@ -31,6 +32,9 @@ This mod requires BepInEx to work. BepInEx is a modding framework which allows m
 
 ## Changelog
 
+- v1.1.3:
+  - Remove now unneded "heal lowest" fix (got fixed in the game)
+  - Allow the Demon to drop a Demon Sword while another one is on the board (you can already do this anyway by shipping them to the island before the fight)
 - v1.1.2: Update Readme (clarify mob-specific drops adjustment)
 - v1.1.1: Fix drag into combat
 - v1.1
