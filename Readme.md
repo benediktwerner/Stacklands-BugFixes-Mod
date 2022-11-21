@@ -1,7 +1,6 @@
 # Stacklands BugFixes Mod
 
 Fixes various bugs in the game:
-- HealLowest special attacks no longer damage the healed units
 - When dragging a stack onto a fight, add all cards to it
 - Only spawn island ideas pack after the first Demon kill
 - Fix resolution setting sometimes not loading correctly
