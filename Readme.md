@@ -1,10 +1,8 @@
 # Stacklands BugFixes Mod
 
 Fixes various bugs in the game:
-- When dragging a stack onto a fight, add all cards to it
 - Only spawn island ideas pack after the first Demon kill
 - Fix resolution setting sometimes not loading correctly
-- Allow getting the combat intro pack (with `Rumor: Combat`) on any pack after the 10th instead of only exactly the 10th (for saves created before the Witch Forest update or when you buy multiple packs before opening them in which case there won't be one counted as exactly the 10th)
 
 Not really a bug but just really stupid:
 - Don't limit mob-specific drops to one per "attack" (i.e. until no more enemies are on the board)

@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Reflection.Emit;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -34,54 +32,10 @@ namespace BugFixes
         }
 
         [HarmonyPrefix]
-        [HarmonyPatch(typeof(Combatable), nameof(Combatable.StoppedDragging))]
-        public static void JoinWholeStackInCombat2(Combatable __instance, out GameCard __state)
-        {
-            __state = __instance.MyGameCard.Child;
-        }
-
-        [HarmonyPostfix]
-        [HarmonyPatch(typeof(Combatable), nameof(Combatable.StoppedDragging))]
-        public static void JoinWholeStackInCombat3(Combatable __instance, GameCard __state)
-        {
-            var conflict = __instance.MyConflict;
-            if (conflict == null)
-                return;
-
-            var child = __state;
-            while (child != null)
-            {
-                var nxt = child.Child;
-                if (child.CardData is Combatable c && !c.InConflict)
-                    conflict.JoinConflict(c);
-                child = nxt;
-            }
-        }
-
-        [HarmonyPrefix]
         [HarmonyPatch(typeof(Demon), nameof(Demon.Die))]
         public static void AllowMoreThan1DemonSwordDrop(Demon __instance)
         {
             __instance.Drops.Chances.ForEach(c => c.HasMaxCount = false);
-        }
-
-        [HarmonyTranspiler]
-        [HarmonyPatch(typeof(Boosterpack), nameof(Boosterpack.Clicked))]
-        public static IEnumerable<CodeInstruction> SpawnCombatIntroBoosterAfter10thPack(
-            IEnumerable<CodeInstruction> instructions
-        )
-        {
-            var matcher = new CodeMatcher(instructions).MatchForward(
-                false,
-                new CodeMatch(OpCodes.Ldloc_2),
-                new CodeMatch(OpCodes.Ldc_I4_S, (sbyte)10),
-                new CodeMatch(OpCodes.Bne_Un)
-            );
-            if (matcher.IsValid)
-                matcher.Advance(2).SetOpcodeAndAdvance(OpCodes.Ble_Un);
-            else
-                L.LogWarning("Failed to find boughtBoosters == 10 check");
-            return matcher.InstructionEnumeration();
         }
 
         public void Update()
