@@ -1,21 +1,23 @@
 # Stacklands BugFixes Mod
 
-Fixes various bugs in the game:
-- Only spawn island ideas pack after the first Demon kill
-- Fix resolution setting sometimes not loading correctly
+Since all the other bugs have been fixed in the game, the main remaining thing this mod now does is
+to allow the Demon to drop a Demon Sword even when another one is on the board. This isn't really
+a bug since the devs clearly intentional made it this way but you can already avoid this anyway by shipping the other swords
+to the island before the fight so imo it's a rather dumb restrictions.
 
-Not really a bug but just really stupid:
-- Don't limit mob-specific drops to one per "attack" (i.e. until no more enemies are on the board)
-- Allow the Demon to drop a Demon Sword while another one is on the board (you can already do this anyway by shipping them to the island before the fight)
+Otherwise, the only real bug this mod still fixes is the display resolution sometimes not loading correctly
+(e.g. when the resolution is set to 1080p on a 4k monitor, it sometimes reverts to 4k).
 
 ## Manual Installation
+
 This mod requires BepInEx to work. BepInEx is a modding framework which allows multiple mods to be loaded.
 
 1. Download and install BepInEx from the [Thunderstore](https://stacklands.thunderstore.io/package/BepInEx/BepInExPack_Stacklands/).
-4. Download this mod and extract it into `BepInEx/plugins/`
-5. Launch the game
+2. Download this mod and extract it into `BepInEx/plugins/`
+3. Launch the game
 
 ## Development
+
 1. Install BepInEx
 2. This mod uses publicized game DLLs to get private members without reflection
    - Use https://github.com/CabbageCrow/AssemblyPublicizer for example to publicize `Stacklands/Stacklands_Data/Managed/GameScripts.dll` (just drag the DLL onto the publicizer exe)
@@ -25,11 +27,13 @@ This mod requires BepInEx to work. BepInEx is a modding framework which allows m
    - If you're using VSCode, the `.vscode/tasks.json` file should make it so that you can just do `Run Build`/`Ctrl+Shift+B` to build.
 
 ## Links
+
 - Github: https://github.com/benediktwerner/Stacklands-BugFixes-Mod
 - Thunderstore: https://stacklands.thunderstore.io/package/benediktwerner/BugFixes
 
 ## Changelog
 
+- v1.1.4: Remove all the now unnecessary bug fixes and the mob drop fix (since it reduces Magic Dust gain a lot and probably isn't that useful otherwise)
 - v1.1.3:
   - Remove now unneded "heal lowest" fix (got fixed in the game)
   - Allow the Demon to drop a Demon Sword while another one is on the board (you can already do this anyway by shipping them to the island before the fight)

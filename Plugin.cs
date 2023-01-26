@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 using UnityEngine;
@@ -18,20 +17,6 @@ namespace BugFixes
         }
 
         [HarmonyPrefix]
-        [HarmonyPatch(typeof(Cutscenes), nameof(Cutscenes.IslandIntroPack))]
-        public static void NoSecondIslandPackFromDemon(out bool __runOriginal, out IEnumerator __result)
-        {
-            __result = EndCutscenes();
-            __runOriginal = !WorldManager.instance.CurrentSaveGame.GotIslandIntroPack;
-        }
-
-        public static IEnumerator EndCutscenes()
-        {
-            Cutscenes.Stop();
-            yield break;
-        }
-
-        [HarmonyPrefix]
         [HarmonyPatch(typeof(Demon), nameof(Demon.Die))]
         public static void AllowMoreThan1DemonSwordDrop(Demon __instance)
         {
@@ -40,8 +25,6 @@ namespace BugFixes
 
         public void Update()
         {
-            if (Time.realtimeSinceStartup > 30f)
-                return;
             if (
                 Screen.currentResolution.width != OptionsScreen.CurrentWidth
                 || Screen.currentResolution.height != OptionsScreen.CurrentHeight
@@ -49,11 +32,6 @@ namespace BugFixes
             {
                 L.LogWarning("Found real resolution != options resolution. Adjusting.");
                 OptionsScreen.SetResolution();
-            }
-
-            if (WorldManager.instance?.CurrentRunVariables != null)
-            {
-                WorldManager.instance.CurrentRunVariables.CanDropItem = true;
             }
         }
     }
