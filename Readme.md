@@ -1,12 +1,19 @@
 # Stacklands BugFixes Mod
 
-Since all the other bugs have been fixed in the game, the main remaining thing this mod now does is
-to allow the Demon to drop a Demon Sword even when another one is on the board. This isn't really
-a bug since the devs clearly intentional made it this way but you can already avoid this anyway by shipping the other swords
-to the island before the fight so imo it's a rather dumb restrictions.
+Fixes various bugs in the game:
 
-Otherwise, the only real bug this mod still fixes is the display resolution sometimes not loading correctly
-(e.g. when the resolution is set to 1080p on a 4k monitor, it sometimes reverts to 4k).
+- Fixes Well Fed buff only getting applied when not already present
+- Fixes Crane arrows sometimes pointing to the wrong target (i.e. not where the card will actually end up)
+- Prevents Cranes from attempting to put cards on stacks with ongoing crafting (which wouldn't succeed)
+- Fixes Crane movement when the top card on the output stack moves away during movement
+- Fixes Sawmills and Brickyards detaching from Magic Glue after crafting is complete
+- Fixes Stable Portals detaching from Magic Glue after placing villagers on it
+- Fixes the display resolution sometimes not loading correctly (e.g. when the resolution is set to 1080p on a 4k monitor, it sometimes reverts to 4k)
+
+Arguably not a bug:
+
+- Allow the Demon sword to drop Demon Swords even if one is already on the board. The devs clearly intentional made it this way so it's definitely not a bug but you can already avoid this anyway by shipping the other swords
+  to the island before the fight so imo it's a rather dumb restrictions.
 
 ## Manual Installation
 
@@ -33,6 +40,7 @@ This mod requires BepInEx to work. BepInEx is a modding framework which allows m
 
 ## Changelog
 
+- v1.2.0:
 - v1.1.4: Remove all the now unnecessary bug fixes and the mob drop fix (since it reduces Magic Dust gain a lot and probably isn't that useful otherwise)
 - v1.1.3:
   - Remove now unneded "heal lowest" fix (got fixed in the game)
