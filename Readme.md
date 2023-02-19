@@ -40,7 +40,14 @@ This mod requires BepInEx to work. BepInEx is a modding framework which allows m
 
 ## Changelog
 
+- v1.2.1: Update Readme
 - v1.2.0:
+  - Fixes Well Fed buff only getting applied when not already present
+  - Fixes Crane arrows sometimes pointing to the wrong target (i.e. not where the card will actually end up)
+  - Prevents Cranes from attempting to put cards on stacks with ongoing crafting (which wouldn't succeed)
+  - Fixes Crane movement when the top card on the output stack moves away during movement
+  - Fixes Sawmills and Brickyards detaching from Magic Glue after crafting is complete
+  - Fixes Stable Portals detaching from Magic Glue after placing villagers on it
 - v1.1.4: Remove all the now unnecessary bug fixes and the mob drop fix (since it reduces Magic Dust gain a lot and probably isn't that useful otherwise)
 - v1.1.3:
   - Remove now unneded "heal lowest" fix (got fixed in the game)
