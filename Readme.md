@@ -40,6 +40,7 @@ This mod requires BepInEx to work. BepInEx is a modding framework which allows m
 
 ## Changelog
 
+- v1.2.2: Fix resolution fix in windowed mode
 - v1.2.1: Update Readme
 - v1.2.0:
   - Fixes Well Fed buff only getting applied when not already present

@@ -101,12 +101,11 @@ namespace BugFixes
 
         public void Update()
         {
-            if (
-                Screen.currentResolution.width != OptionsScreen.CurrentWidth
-                || Screen.currentResolution.height != OptionsScreen.CurrentHeight
-            )
+            if (Screen.width != OptionsScreen.CurrentWidth || Screen.height != OptionsScreen.CurrentHeight)
             {
-                L.LogWarning("Found real resolution != options resolution. Adjusting.");
+                L.LogWarning(
+                    $"Found real resolution ({Screen.width}x{Screen.height}) != options resolution ({OptionsScreen.CurrentWidth}x{OptionsScreen.CurrentHeight}). Adjusting."
+                );
                 OptionsScreen.SetResolution();
             }
         }
